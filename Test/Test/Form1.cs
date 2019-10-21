@@ -36,10 +36,6 @@ namespace Test
             var input = bigAss.Split(' ');
             var x = new List<int>();
             var y = new List<int>();
-            var legtUp = (-1, -1);
-            var rightUp = (-1, -1);
-            var legtDown = (-1, -1);
-            var rightDown = (-1, -1);
             string[] xy;
             foreach (var i in input)
             {
@@ -50,30 +46,7 @@ namespace Test
             for (int i = 0; i < x.Count; i++)
             {
                 g.DrawLine(pen, x[i], y[i], x[i] + 1, y[i] + 1);
-                if(x[i] < legtUp.Item1 || legtUp.Item2 == -1)
-                legtUp = (x[i], y[i]);
-                if (x[i] == legtUp.Item1 && y[i] < legtUp.Item2)
-                    legtUp = (x[i], y[i]);
-
-                if (y[i] >= legtDown.Item2 || legtDown.Item1 == -1)
-                    legtDown = (x[i], y[i]);
-                if (x[i] == legtDown.Item1 && y[i] == legtDown.Item2)
-                    legtDown = (x[i], y[i]);
-
-                if (y[i] <= rightUp.Item2 || rightUp.Item1 == -1)
-                    rightUp = (x[i], y[i]);
-                if (x[i] >= rightUp.Item1 && y[i] == rightUp.Item2)
-                    rightUp = (x[i], y[i]);
-
-                if (x[i] >= rightDown.Item1 || rightDown.Item1 == -1)
-                    rightDown = (x[i], y[i]);
-                if (x[i] == rightDown.Item1 && y[i] > rightDown.Item2)
-                    rightDown = (x[i], y[i]);
             }
-            g.FillRectangle(brush, rightDown.Item1, rightDown.Item2, 2, 2);
-            g.FillRectangle(brush, rightUp.Item1, rightUp.Item2, 2, 2);
-            g.FillRectangle(brush, legtDown.Item1, legtDown.Item2, 2, 2);
-            g.FillRectangle(brush, legtUp.Item1, legtUp.Item2, 2, 2);
         }
     }
 }
